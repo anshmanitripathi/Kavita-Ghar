@@ -9,8 +9,9 @@ import { Profile } from './pages/Profile';
 import { useSelector } from 'react-redux';
 
 function Layout(){
-  const user = useSelector((state)=>user.state);
+  const {user} = useSelector((state)=>state.user);
   const location = useLocation();
+  console.log(user);
 
   return user?.token ? (
     <Outlet/>
@@ -26,10 +27,10 @@ function App() {
     <div data-theme={theme}>
       <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}> 
+        {/* <Route element={<Layout />}>  */}
           <Route path='/' element={<Home/>}></Route>
           <Route path='/profile/:id' element={<Profile/>}></Route>
-        </Route>
+        {/* </Route> */}
 
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
